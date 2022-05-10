@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 const { Configuration, OpenAIApi } = require("openai");
-=======
-// const { Configuration, OpenAIApi } = require("openai");
-// import { Configuration, OpenAIApi } from "openai";
->>>>>>> d6acef08742c3850ce3246acc10ce0ffbb7e41af
 
 // const configuration = new Configuration({
 //     apiKey: process.env.OPENAI_API_KEY,
@@ -31,7 +26,6 @@ fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
     },
     body: JSON.stringify(data),
 });
-<<<<<<< HEAD
 const openai = new OpenAIApi(configuration);
 
 
@@ -43,13 +37,10 @@ const data = {
     frequency_penalty: 0,
     presence_penalty: 0,
 };
-=======
->>>>>>> d6acef08742c3850ce3246acc10ce0ffbb7e41af
 
 
 
 
-<<<<<<< HEAD
 fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
     method: "POST",
     headers: {
@@ -62,8 +53,6 @@ fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
 
 
 
-=======
->>>>>>> d6acef08742c3850ce3246acc10ce0ffbb7e41af
 // function generateReply(phrase) {
 //     return 
 // }
