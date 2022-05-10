@@ -9,6 +9,7 @@ function App() {
       <Prompt /> 
       {/* <ResponseList /> */}
       {/* <ResponseCard /> */}
+      {/* <ResponseCard /> */}
     </div>
   );
 }

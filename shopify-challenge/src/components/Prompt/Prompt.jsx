@@ -59,6 +59,8 @@ const Prompt = (props) => {
         setUserInput('');
     }
 
+
+
     const handleChange = (e) => {
         setUserInput(e.target.value);
     };
@@ -106,6 +108,3 @@ const Prompt = (props) => {
 
 
 export default Prompt;
-
-
-
