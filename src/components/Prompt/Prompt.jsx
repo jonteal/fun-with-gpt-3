@@ -3,9 +3,15 @@ import Robot from '../../images/robot.jpg';
 import { useState } from 'react';
 import ResponseCard from '../ResponseCard/ResponseCard';
 
-const { Configuration, OpenAIApi } = require("openai");
+import { Configuration, OpenAIApi } from "openai";
 
+    // API KEY
+    const configuration = new Configuration({
+        apiKey: process.env.OPENAI_API_KEY
+    });
 
+    // VARIABLE STORING API KEY
+    const openai = new OpenAIApi(configuration);
 
 
 const Prompt = (props) => {
@@ -15,13 +21,7 @@ const Prompt = (props) => {
     const [responseCards, setResponseCards] = ([]);
 
 
-    // API KEY
-    const configuration = new Configuration({
-        apiKey: "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",
-    });
 
-    // VARIABLE STORING API KEY
-    const openai = new OpenAIApi(configuration);
 
     // FETCH API DATA FUNCTION
     const fetchResponse = () => {
@@ -36,7 +36,7 @@ const Prompt = (props) => {
                 echo: true,
             })
             .then((response) => {
-                // console.log(response);
+                console.log(response);
                 setResponse(
                     response.data.choices[0].text
                 )
@@ -115,12 +115,26 @@ const Prompt = (props) => {
                     </button>
                 </form>
 
-
-
+            
+            {/* ATTEMPT AT MAPPING THROUGH THE RESPONSES USING RESPONSECARD COMPONENT */}
                 <ul>
-                    {ResponseCardData}  
+                {responseCards?.map((response) => (
+                
+                    <li>
+                        {<ResponseCard response={response} />}  
+                    </li>
+                
+                ))}
                 </ul>
 
+
+                {/* COMMENT CODE BACK IN TO SEE WORKING VERSION OF CARD */}
+                {/* <li>
+                    {<ResponseCard response={response} />}  
+                </li> */}
+                
+
+                
                 
             </div>
             
