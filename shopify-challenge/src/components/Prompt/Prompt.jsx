@@ -10,7 +10,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const Prompt = (props) => {
     const [userInput, setUserInput] = useState('');
-    const [prompt, setPrompt] = useState('');
+    // const [prompt, setPrompt] = useState('');
     const [response, setResponse] = useState('');
     const [responseCards, setResponseCards] = ([]);
 
@@ -34,37 +34,42 @@ const Prompt = (props) => {
                 frequency_penalty: 0,
                 presence_penalty: 0,
                 echo: true,
-                // stream: true,
             })
             .then((response) => {
-                console.log(response);
-                // setPrompt(
-                //     userInput
-                // )
+                // console.log(response);
                 setResponse(
                     response.data.choices[0].text
                 )
             })
-            // .then(() => {
-            //     setResponseCards({
-            //         prompt: prompt,
-            //         response: response,
-            //     })
-            //     console.log(responseCards);
-            // })
+            .then((response) => {
+                let copy = [...responseCards];
+                console.log(copy);
+                copy = [
+                    ...copy,
+                    {
+                        id: responseCards.length + 1,
+                        prompt: response.split('\n')[0],
+                        response: response.split('\n\n')[1]
+                    } 
+                ];
+                setResponseCards(copy);
+            })
         } catch (err) {
             console.error(err);
         }
     }
 
-    
+    const ResponseCardData = responseCards?.map((response) => (
+        <li key={response.id}>
+            <ResponseCard response={response} />
+        </li>
+    ))
 
     // HANDLES SUBMIT TO FIRE OFF FETCHING FUNCTION
     const handleSubmit = (e) => {
         e.preventDefault();
         fetchResponse();
         addResponseCard();
-        // addResponse();
         setUserInput('');
     }
 
@@ -75,7 +80,6 @@ const Prompt = (props) => {
     };
 
 
-
     const addResponseCard = (responseCard) => {
 
         const newResponseCards = [responseCard, ...responseCards];
@@ -83,8 +87,6 @@ const Prompt = (props) => {
         setResponseCards(newResponseCards);
         console.log(newResponseCards);
     }
-
-
 
 
     return(
@@ -105,41 +107,20 @@ const Prompt = (props) => {
                         onChange={handleChange}
                         placeholder="Enter your prompt here..."
                     />
-                <button
-                    onClick={handleSubmit}
-                    className="submit-button"
-                >
-                    Submit
-                </button>
-
+                    <button
+                        onClick={handleSubmit}
+                        className="submit-button"
+                    >
+                        Submit
+                    </button>
                 </form>
-
-
-                {/* <div>
-                    {responseList[0] ? (
-                        <div>
-                            {responseList.map((prompt) => {
-                                return (
-                                    <div key={prompt.value}>
-                                        <div>
-                                            <ResponseCard prompt={prompt} />
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    ) : null}
-                </div> */}
-
 
 
 
                 <ul>
-                    <li>
-                        <ResponseCard response={response} />
-                    </li>
+                    {ResponseCardData}  
                 </ul>
-                
+
                 
             </div>
             
