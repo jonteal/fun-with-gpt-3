@@ -33,19 +33,30 @@ const Prompt = (props) => {
                 top_p: 1,
                 frequency_penalty: 0,
                 presence_penalty: 0,
+                echo: true,
+                // stream: true,
             })
             .then((response) => {
-                setPrompt(
-                    userInput
-                )
+                console.log(response);
+                // setPrompt(
+                //     userInput
+                // )
                 setResponse(
                     response.data.choices[0].text
                 )
             })
+            // .then(() => {
+            //     setResponseCards({
+            //         prompt: prompt,
+            //         response: response,
+            //     })
+            //     console.log(responseCards);
+            // })
         } catch (err) {
             console.error(err);
         }
     }
+
     
 
     // HANDLES SUBMIT TO FIRE OFF FETCHING FUNCTION
@@ -121,21 +132,16 @@ const Prompt = (props) => {
                 </div> */}
 
 
-                {/* <ul>
-                    {ResponseData}
-                </ul> */}
+
 
                 <ul>
                     <li>
-                        <ResponseCard prompt={prompt} response={response} />
+                        <ResponseCard response={response} />
                     </li>
                 </ul>
                 
                 
             </div>
-
-
-
             
         </>
     )

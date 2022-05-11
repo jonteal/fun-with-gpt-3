@@ -11,7 +11,7 @@ const ResponseCard = (props) => {
                             <span>Prompt</span>: 
                         </p>
                         <p className='right-side'>
-                            {props.prompt}
+                            {props.response.split('\n')[0]}
                         </p>
                     </div>
                     <div className='response-container'>
@@ -19,7 +19,7 @@ const ResponseCard = (props) => {
                             <span>Response</span>:
                         </p>
                         <p className='right-side'>
-                            {props.response}
+                            {props.response.split('\n\n')[1]}
                         </p>
                     </div>
                 </div>
