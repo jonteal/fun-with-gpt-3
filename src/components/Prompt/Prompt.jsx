@@ -3,15 +3,15 @@ import Robot from '../../images/robot.jpg';
 import { useState } from 'react';
 import ResponseCard from '../ResponseCard/ResponseCard';
 
-import { Configuration, OpenAIApi } from "openai";
+// import { Configuration, OpenAIApi } from "openai";
 
-    // API KEY
-    const configuration = new Configuration({
-        apiKey: process.env.OPENAI_API_KEY
-    });
+//     // API KEY
+//     const configuration = new Configuration({
+//         apiKey: process.env.OPENAI_API_KEY
+//     });
 
-    // VARIABLE STORING API KEY
-    const openai = new OpenAIApi(configuration);
+//     // VARIABLE STORING API KEY
+//     const openai = new OpenAIApi(configuration);
 
 
 const Prompt = (props) => {
@@ -24,40 +24,40 @@ const Prompt = (props) => {
 
 
     // FETCH API DATA FUNCTION
-    const fetchResponse = () => {
-        try {
-            openai.createCompletion("text-curie-001", {
-                prompt: userInput,
-                temperature: 0.8,
-                max_tokens: 30,
-                top_p: 1,
-                frequency_penalty: 0,
-                presence_penalty: 0,
-                echo: true,
-            })
-            .then((response) => {
-                console.log(response);
-                setResponse(
-                    response.data.choices[0].text
-                )
-            })
-            .then((response) => {
-                let copy = [...responseCards];
-                console.log(copy);
-                copy = [
-                    ...copy,
-                    {
-                        id: responseCards.length + 1,
-                        prompt: response.split('\n')[0],
-                        response: response.split('\n\n')[1]
-                    } 
-                ];
-                setResponseCards(copy);
-            })
-        } catch (err) {
-            console.error(err);
-        }
-    }
+    // const fetchResponse = () => {
+    //     try {
+    //         openai.createCompletion("text-curie-001", {
+    //             prompt: userInput,
+    //             temperature: 0.8,
+    //             max_tokens: 30,
+    //             top_p: 1,
+    //             frequency_penalty: 0,
+    //             presence_penalty: 0,
+    //             echo: true,
+    //         })
+    //         .then((response) => {
+    //             console.log(response);
+    //             setResponse(
+    //                 response.data.choices[0].text
+    //             )
+    //         })
+    //         .then((response) => {
+    //             let copy = [...responseCards];
+    //             console.log(copy);
+    //             copy = [
+    //                 ...copy,
+    //                 {
+    //                     id: responseCards.length + 1,
+    //                     prompt: response.split('\n')[0],
+    //                     response: response.split('\n\n')[1]
+    //                 } 
+    //             ];
+    //             setResponseCards(copy);
+    //         })
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // }
 
     const ResponseCardData = responseCards?.map((response) => (
         <li key={response.id}>
