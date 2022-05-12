@@ -1,16 +1,19 @@
 import ResponseCard from "../ResponseCard/ResponseCard";
-import { useState } from "react";
-import Prompt from "../Prompt/Prompt";
+// import { useState } from "react";
+// import Prompt from "../Prompt/Prompt";
 
-const ResponseList = () => {
-
+const ResponseList = ({ savedResponses }) => {
+    if (savedResponses.length < 1) return <p>No responses yet...</p>;
     return (
-        <>
-            <div>
-                <ResponseCard />
-
-            </div>
-        </>
+        <ul>
+            {savedResponses.map(response => (
+                <ResponseCard 
+                    prompt={response.prompt}
+                    response={response.response}
+                    key={response.date}
+                />
+            ))}
+        </ul>
     )
 }
 

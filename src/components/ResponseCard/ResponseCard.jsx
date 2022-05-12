@@ -1,6 +1,6 @@
 import './ResponseCard.css';
 
-const ResponseCard = (props) => {
+const ResponseCard = ({ prompt, response }) => {
     return (
         <>
         {/* {props && ? <p>true</p> : <p>not true</p>} */}
@@ -11,7 +11,8 @@ const ResponseCard = (props) => {
                             <span>Prompt</span>: 
                         </p>
                         <p className='right-side'>
-                            {props.response.split('\n')[0]}
+                            {prompt}
+                            {/* {prompt.response.split('\n')[0]} */}
                         </p>
                     </div>
                     <div className='response-container'>
@@ -19,7 +20,8 @@ const ResponseCard = (props) => {
                             <span>Response</span>:
                         </p>
                         <p className='right-side'>
-                            {props.response.split('\n\n')[1]}
+                            {response}
+                            {/* {response.response.split('\n\n')[1]} */}
                         </p>
                     </div>
                 </div>

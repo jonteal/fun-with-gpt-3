@@ -1,5 +1,5 @@
-//function for making http post request to api
-const fetchData = async data => {
+// function for making http post request to api
+const fetchResponse = async data => {
     const response = await fetch(
         'https://api.openai.com/v1/engines/text-curie-001/completions',
         {
@@ -15,4 +15,4 @@ const fetchData = async data => {
     return responseData;
 };
     
-export default fetchData;
+export default fetchResponse;

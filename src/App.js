@@ -1,14 +1,24 @@
 import './App.css';
 import Prompt from './components/Prompt/Prompt';
-// import ResponseCard from './components/ResponseCard/ResponseCard';
-// import ResponseList from './components/ResponseList/ResponseList';
+import ResponseList from './components/ResponseList/ResponseList';
+import { useState } from 'react';
 
 function App() {
+
+  const [savedResponses, setSavedResponses] = useState(
+    localStorage.getItem('responses')
+      ? JSON.parse(localStorage.getItem('responses'))
+      : []
+  );
+
+  const saveResponse = newResponse => {
+    setSavedResponses([newResponse, ...savedResponses]);
+  };
+
   return (
     <div className="App">
-      <Prompt /> 
-      {/* <ResponseList /> */}
-      {/* <ResponseCard /> */}
+      <Prompt saveResponse={saveResponse} />
+      <ResponseList savedResponses={savedResponses} />
     </div>
   );
 }
