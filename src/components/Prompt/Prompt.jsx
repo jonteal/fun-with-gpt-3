@@ -1,8 +1,8 @@
 import './Prompt.css';
-import Robot from '../../images/robot.jpg';
+import Robot from '../../images/robot.jpeg';
 import { useState } from 'react';
 
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from 'openai';
 
     // API KEY CONFIG
     const configuration = new Configuration({
@@ -14,18 +14,27 @@ import { Configuration, OpenAIApi } from "openai";
 
 
 const Prompt = ({ saveResponse }) => {
+
+    // CONTROLS STATE OF PROMPT
     const [prompt, setPrompt] = useState('');
+
+    // DISABLES BUTTON IF INPUT CRITERIA NOT MET
     const [buttonDisabled, setButtonDisabled] = useState(true);
+
+    // MESSAGE TO USER
     const [message, setMessage] = useState('');
+
+    // TELLS USER DATA IS LOADING
+    const [isLoading, setIsLoading] = useState(false);
 
 
     // FETCH API DATA FUNCTION
     const fetchResponse = () => {
         try {
-            openai.createCompletion("text-curie-001", {
+            openai.createCompletion('text-curie-001', {
                 prompt: prompt,
                 temperature: 0.8,
-                max_tokens: 30,
+                max_tokens: 40,
                 top_p: 1,
                 frequency_penalty: 0,
                 presence_penalty: 0,
@@ -39,6 +48,7 @@ const Prompt = ({ saveResponse }) => {
                     response: response.split('\n\n')[1],
                     date: Date.now(),
                 };
+                setIsLoading(false);
                 saveResponse(newResponse);
             })
         } catch (err) {
@@ -46,10 +56,11 @@ const Prompt = ({ saveResponse }) => {
         }
     }
 
-
     // HANDLES SUBMIT TO FIRE OFF FETCHING FUNCTION
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        setIsLoading(true);
 
         // If INPUT IS LESS THAN 10 CHARACTERS, IT DOES NOT FETCH DATA
         if (prompt.trim().length < 10) {
@@ -62,7 +73,7 @@ const Prompt = ({ saveResponse }) => {
 
     // SETS THE INPUT TO THE USERINPUT VARIABLE WITH USESTATE HOOK 
     const handleChange = input => {
-        if (input === "") {
+        if (input === '') {
             setButtonDisabled(true);
             setMessage(null);
         } else {
@@ -74,37 +85,49 @@ const Prompt = ({ saveResponse }) => {
 
     return(
         <>
-            <div className="prompt-wrapper">
+            <div className='prompt-wrapper'>
                 <h1>Hi! I'm Ned!</h1>
-                <img className="robot-img" src={Robot} alt="Robot Cartoon" />
-                <h2>Sometimes I say random things...</h2>
-                <p className="question-text">All I need is a little help!</p>
+                <img className='robot-img' src={Robot} alt='Robot Cartoon' />
+                {/* <img className='robot-img' src="https://media.giphy.com/media/zbzuZgxt23h8ywu7Bm/giphy.gif" alt='Robot Cartoon' /> */}
 
-                <p className="prompt-instruction">What would you like me to talk about?</p>
+                <h2 className='sub-header'>Sometimes I say random things...</h2>
+                <p className='question-text'>All I need is a little help!</p>
+
+                <p className='prompt-instruction'>What would you like me to talk about?</p>
                 
-                <form className="prompt-form">
+                <form className='prompt-form'>
                     <input 
                         autoFocus
-                        type="text" 
-                        className="textbox"
+                        type='text' 
+                        className='textbox'
                         value={prompt}
                         onChange={({ target }) => handleChange(target.value)}
-                        placeholder="Enter your prompt here..."
+                        placeholder='Enter your prompt here...'
                     />
-                    <button
-                        disabled={buttonDisabled}
-                        onClick={handleSubmit}
-                        className="submit-button"
-                    >
-                        Submit
-                    </button>
+                    { !isLoading &&
+                        <button
+                            disabled={buttonDisabled}
+                            onClick={handleSubmit}
+                            className='submit-button'
+                        >
+                            Submit
+                        </button>
+                    }
+
+                    { isLoading &&
+                        <button
+                            disabled
+                            onClick={handleSubmit}
+                            className='submit-button'
+                        >
+                            Loading...
+                        </button>
+                    }
                     {message && <p>{message}</p>}
                 </form>
             </div>
         </>
     )
 }
-
-
 
 export default Prompt;
