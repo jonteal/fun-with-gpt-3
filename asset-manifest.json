@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/nedtalks/static/css/main.11c8be87.css",
+    "main.js": "/nedtalks/static/js/main.5c230d3c.js",
+    "static/media/robot.png": "/nedtalks/static/media/robot.797b1a662b4841f1b771.png",
+    "index.html": "/nedtalks/index.html",
+    "main.11c8be87.css.map": "/nedtalks/static/css/main.11c8be87.css.map",
+    "main.5c230d3c.js.map": "/nedtalks/static/js/main.5c230d3c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.11c8be87.css",
+    "static/js/main.5c230d3c.js"
+  ]
+}
