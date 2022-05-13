@@ -1,5 +1,5 @@
 import './Prompt.css';
-import Robot from '../../images/robot.jpeg';
+import Robot from '../../images/robot.png';
 import { useState } from 'react';
 
 import { Configuration, OpenAIApi } from 'openai';
