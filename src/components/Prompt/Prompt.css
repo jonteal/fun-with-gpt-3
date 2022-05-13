@@ -1,4 +1,4 @@
-
+/* Prompt Component */
 
 .prompt-wrapper {
     display: flex;
@@ -6,7 +6,6 @@
     align-items: center;
     margin-top: 20px;
 }
-
 
 .robot-img {
     height: 100px;
@@ -35,14 +34,34 @@
     font-size: 1.2rem;
 }
 
+.textbox:focus {
+    outline: none !important;
+    border: 1px solid #96bf48;
+    box-shadow: 0 0 10px #96bf48;
+}
+
 .submit-button {
     width: 50%;
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
+    padding: 10px; 
+    padding: 15px;
+    border-radius: 15px;
     border: none;
-    background-color: #f1356d;
-    color: white;
-    padding: 10px;
+    background-color: #96bf48;
+    font-size: 1.25rem;
     cursor: pointer;
+    margin-bottom: 15px;
+    margin-top: 15%;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+    border-color: #96bf48;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #96bf48 inset, 0 0 0 0 #96bf48;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 280ms ease-in-out;
+}
+
+.submit-button:hover {
+    box-shadow: 0 0 5px 0 #6e8f30 inset, 0 0 5px 4px #6e8f30 ;
 }

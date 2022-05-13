@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Configuration, OpenAIApi } from "openai";
 
-    // API KEY
+    // API KEY CONFIG
     const configuration = new Configuration({
         apiKey: process.env.REACT_APP_OPEN_AI_API
     });
@@ -15,6 +15,8 @@ import { Configuration, OpenAIApi } from "openai";
 
 const Prompt = ({ saveResponse }) => {
     const [prompt, setPrompt] = useState('');
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [message, setMessage] = useState('');
 
 
     // FETCH API DATA FUNCTION
@@ -30,17 +32,15 @@ const Prompt = ({ saveResponse }) => {
                 echo: true,
             })
             .then(data => {
-                const response = data.data.choices[0].text
-                console.log(response);
+                const response = data.data.choices[0].text;
 
                 const newResponse = {
                     prompt: prompt, 
-                    response: response,
+                    response: response.split('\n\n')[1],
                     date: Date.now(),
                 };
                 saveResponse(newResponse);
             })
-            
         } catch (err) {
             console.error(err);
         }
@@ -50,12 +50,25 @@ const Prompt = ({ saveResponse }) => {
     // HANDLES SUBMIT TO FIRE OFF FETCHING FUNCTION
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetchResponse();
-        setPrompt('');
+
+        // If INPUT IS LESS THAN 10 CHARACTERS, IT DOES NOT FETCH DATA
+        if (prompt.trim().length < 10) {
+            setMessage('Please type at least 10 characters');
+        } else {
+            fetchResponse();
+            setPrompt('');
+        }
     }
 
     // SETS THE INPUT TO THE USERINPUT VARIABLE WITH USESTATE HOOK 
     const handleChange = input => {
+        if (input === "") {
+            setButtonDisabled(true);
+            setMessage(null);
+        } else {
+            setButtonDisabled(false);
+            setMessage(null);
+        }
         setPrompt(input);
     };
 
@@ -71,6 +84,7 @@ const Prompt = ({ saveResponse }) => {
                 
                 <form className="prompt-form">
                     <input 
+                        autoFocus
                         type="text" 
                         className="textbox"
                         value={prompt}
@@ -78,11 +92,13 @@ const Prompt = ({ saveResponse }) => {
                         placeholder="Enter your prompt here..."
                     />
                     <button
+                        disabled={buttonDisabled}
                         onClick={handleSubmit}
                         className="submit-button"
                     >
                         Submit
                     </button>
+                    {message && <p>{message}</p>}
                 </form>
             </div>
         </>

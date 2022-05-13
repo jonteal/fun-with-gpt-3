@@ -3,7 +3,6 @@ import './ResponseCard.css';
 const ResponseCard = ({ prompt, response }) => {
     return (
         <>
-        {/* {props && ? <p>true</p> : <p>not true</p>} */}
             <div className="response-card-wrapper">
                 <div className="response-card-content">
                     <div className='prompt-container'>
@@ -12,7 +11,6 @@ const ResponseCard = ({ prompt, response }) => {
                         </p>
                         <p className='right-side'>
                             {prompt}
-                            {/* {prompt.response.split('\n')[0]} */}
                         </p>
                     </div>
                     <div className='response-container'>
@@ -21,7 +19,6 @@ const ResponseCard = ({ prompt, response }) => {
                         </p>
                         <p className='right-side'>
                             {response}
-                            {/* {response.response.split('\n\n')[1]} */}
                         </p>
                     </div>
                 </div>

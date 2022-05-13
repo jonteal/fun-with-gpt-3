@@ -6,9 +6,10 @@
 }
 
 .response-card-content {
-    border: 1px dotted red;
+    border: 2px dotted #96bf48;
     width: 70%;
     margin: 10px;
+    margin-right: 8%;
     border-radius: 10px;
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
 }
