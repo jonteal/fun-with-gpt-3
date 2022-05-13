@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/fun-with-gpt-3/static/css/main.11c8be87.css",
+    "main.js": "/fun-with-gpt-3/static/js/main.c10ad323.js",
+    "static/media/robot.png": "/fun-with-gpt-3/static/media/robot.797b1a662b4841f1b771.png",
+    "index.html": "/fun-with-gpt-3/index.html",
+    "main.11c8be87.css.map": "/fun-with-gpt-3/static/css/main.11c8be87.css.map",
+    "main.c10ad323.js.map": "/fun-with-gpt-3/static/js/main.c10ad323.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.11c8be87.css",
+    "static/js/main.c10ad323.js"
+  ]
+}
