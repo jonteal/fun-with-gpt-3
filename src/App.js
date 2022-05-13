@@ -1,7 +1,7 @@
 import './App.css';
 import Prompt from './components/Prompt/Prompt';
 import ResponseList from './components/ResponseList/ResponseList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
@@ -14,6 +14,10 @@ function App() {
   const saveResponse = newResponse => {
     setSavedResponses([newResponse, ...savedResponses]);
   };
+
+  useEffect(() => {
+    localStorage.setItem('responses', JSON.stringify(savedResponses));
+  }, [savedResponses]);
 
   return (
     <div className="App">

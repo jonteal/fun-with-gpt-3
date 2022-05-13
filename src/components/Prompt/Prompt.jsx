@@ -1,7 +1,6 @@
 import './Prompt.css';
 import Robot from '../../images/robot.jpg';
 import { useState } from 'react';
-import ResponseCard from '../ResponseCard/ResponseCard';
 
 import { Configuration, OpenAIApi } from "openai";
 
@@ -14,24 +13,15 @@ import { Configuration, OpenAIApi } from "openai";
     const openai = new OpenAIApi(configuration);
 
 
-
-
-
-
 const Prompt = ({ saveResponse }) => {
-    const [userInput, setUserInput] = useState('');
-    // const [prompt, setPrompt] = useState('');
-    const [response, setResponse] = useState('');
-    const [responseCards, setResponseCards] = ([]);
-
-
+    const [prompt, setPrompt] = useState('');
 
 
     // FETCH API DATA FUNCTION
     const fetchResponse = () => {
         try {
             openai.createCompletion("text-curie-001", {
-                prompt: userInput,
+                prompt: prompt,
                 temperature: 0.8,
                 max_tokens: 30,
                 top_p: 1,
@@ -49,59 +39,25 @@ const Prompt = ({ saveResponse }) => {
                     date: Date.now(),
                 };
                 saveResponse(newResponse);
-
-                // setResponse(
-                //     response.data.choices[0].text
-                // )
             })
             
-            // .then((response) => {
-            //     let copy = [...responseCards];
-            //     console.log(copy);
-            //     copy = [
-            //         ...copy,
-            //         {
-            //             id: responseCards.length + 1,
-            //             prompt: response.split('\n')[0],
-            //             response: response.split('\n\n')[1]
-            //         } 
-            //     ];
-            //     setResponseCards(copy);
-            // })
         } catch (err) {
             console.error(err);
         }
     }
 
-    // const ResponseCardData = responseCards?.map((response) => (
-    //     <li key={response.id}>
-    //         <ResponseCard response={response} />
-    //     </li>
-    // ))
 
     // HANDLES SUBMIT TO FIRE OFF FETCHING FUNCTION
     const handleSubmit = (e) => {
         e.preventDefault();
         fetchResponse();
-        addResponseCard();
-        setUserInput('');
+        setPrompt('');
     }
-
 
     // SETS THE INPUT TO THE USERINPUT VARIABLE WITH USESTATE HOOK 
-    const handleChange = (e) => {
-        setUserInput(e.target.value);
+    const handleChange = input => {
+        setPrompt(input);
     };
-
-
-    const addResponseCard = (responseCard) => {
-
-        const newResponseCards = [responseCard, ...responseCards];
-
-        setResponseCards(newResponseCards);
-        console.log(newResponseCards);
-    }
-
 
     return(
         <>
@@ -117,8 +73,8 @@ const Prompt = ({ saveResponse }) => {
                     <input 
                         type="text" 
                         className="textbox"
-                        value={userInput}
-                        onChange={handleChange}
+                        value={prompt}
+                        onChange={({ target }) => handleChange(target.value)}
                         placeholder="Enter your prompt here..."
                     />
                     <button
@@ -128,28 +84,7 @@ const Prompt = ({ saveResponse }) => {
                         Submit
                     </button>
                 </form>
-
-            
-            {/* ATTEMPT AT MAPPING THROUGH THE RESPONSES USING RESPONSECARD COMPONENT */}
-                <ul>
-                {responseCards?.map((response) => (
-                
-                    <li>
-                        {<ResponseCard response={response} />}  
-                    </li>
-                
-                ))}
-                </ul>
-
-
-                {/* COMMENT CODE BACK IN TO SEE WORKING VERSION OF CARD */}
-                <li>
-                    {<ResponseCard response={response} />}  
-                </li>
-            
-                
             </div>
-            
         </>
     )
 }
