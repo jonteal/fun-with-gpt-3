@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# NED Talks - Fun with GPT-3 - OpenAI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a name="descsection"></a>
+## Description
+Meet Ned! A fun, loving, but also slightly awkward robot with a lot to say. The problem is that he is just a little shy and has a hard time initiating conversation. His lexicon is powered by the incredibly powerful OpenAI API. All you need to do to get him to speak is to ask him a question or make the first move. Bear in mind, the more descriptive your prompt, the more interesting his response is likely to be! 
 
-## Available Scripts
+NOTE: This application is having issues running when deployed due to a 401 error (unauthorized). After careful review and due diligence with regard to protecting the API key through the usage of environment variables, the issue persists. Everytime I would make a commit, while ensuring my .env file would not be pushed up to Github, I would still be notified by email that my API key was leaked and had triggered a rotation of the keys to get me a new protected one. I even went to the lengths of rebuilding a duplicate of the entire repository in another repo and also signing up for a second account with OpenAI through another email account, so as to completely separate from this instance. This resulted in a 429 error (too many requests), which I learned is an issue some other developers are running into with this API. At this point, I am convinced there is a potential issue with the API and I do not know how to proceed in order to get this project properly deployed.
 
-In the project directory, you can run:
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents
+1. [ Description. ](#descsection)
+2. [ Installation. ](#installsection)
+3. [ License. ](#licensesection)
+4. [ Contributing. ](#contribsection)
+5. [ Questions. ](#questionssection)
+6. [ Screenshots. ](#picsection)
+7. [ Links. ](#linksection)
+8. [ Resources/Credit. ](#creditsection)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<a name="installsection"></a>
+## Installation
+* There is no necessary installation process for this application. Just use it in on the web!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<a name="licensesection"></a>
+## License
+Copyright <2022>
 
-### `npm run build`
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  <a name="contribsection"></a>
+## Contributing
+  
+1. [Fork the repo!](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+2. Create a feature branch:
+```
+git checkout -b yourname-branch
+```
+3. Commit changes:
+```
+git commit -m 'Your changes here'
+```
+4. Push to the branch:
+```
+git push origin yourname-branch
+```
+5. Submit a pull request and wait for it to be approved or denied.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  <a name="questionssection"></a>
+## Questions
+* For any questions or clarification regarding OpenAI, please refer to their API documention.
+* https://beta.openai.com/docs/introduction
+  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  
+  <a name="picsection"></a>
+  ## Screenshots
+  ![Screenshot of User Interface](./src/images/screenshot.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+  <a name="linksection"></a>
+  ## Links
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  Deployed Heroku Site: https://jonteal.github.io/fun-with-gpt-3/
+  
+  Github Site: https://github.com/jonteal/fun-with-gpt-3
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  <a name="creditsection"></a>
+## Resources/Credit
+* https://beta.openai.com/docs/introduction

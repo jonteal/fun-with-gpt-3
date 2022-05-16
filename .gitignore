@@ -105,3 +105,6 @@ dist
 .tern-port
 
 node_modules
+
+# Local Netlify folder
+.netlify
